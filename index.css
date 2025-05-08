@@ -1,129 +1,114 @@
-.titulo-centralizado {
-    width: 100%;
-    text-align: center;
-    font-size: 36px;
-    color: #5c008d;
-    margin-bottom: 20px;
-    font-family: 'Optima', sans-serif;
-  }
-  
-
 body {
-    font-family: 'Courier New', monospace;
+    position: relative; /* Adicione isso */
     margin: 0;
-    padding: 40px 20px;
-    width: 100%;
-    min-height: 100vh;
-    background: linear-gradient(rgba(180, 120, 220, 0.3), rgba(180, 120, 220, 0.3)),
-    url('../view/teste_borboletas.jpeg');  
-    background-color: #C092EC;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display:flex;
-    flex-wrap: wrap;
-    gap: 30px;
+    padding: 0;
+    background: linear-gradient(to right, #eac6f9, #fcd4f6);
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
     align-items: center;
     justify-content: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden; /* Evita scroll com brilho animado */
   }
-
-  .vinil {
-    width: 80px;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
- 
-  .girando {
-    animation: girar 3s linear infinite;
-  }
-  @keyframes girar {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }  
-  .music-container {
+  
+  
+  .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-top: 20px;
-    position: relative;
-    z-index: 1000;
-  }
-     
- 
-  .music .vinil {
-    width: 60px;
-    height: auto;
-  }
- 
-  @media (max-width: 768px) {
-    .music-container {
-      position: relative;
-      top: 0;
-      right: 0;
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      z-index: auto;
-    }
-  
-    .vinil {
-      width: 70px;
-    }
+    gap: 20px;
+    z-index: 1; /* Garante que fique acima dos brilhos */
+    position: relative; /* Necessário para o z-index funcionar */
   }
   
+  
+  h1 {
+    color: #82007d;
+    font-size: 36px;
+  }
+  
+  p {
+    color: #59006d;
+    font-size: 18px;
+  }
+  
+  .botao {
+    font-size: 10px;
+    color: #e60073;
+    transition: transform 0.3s ease;
+  }
+  
+  .botao:hover {
+    transform: scale(1.2);
+    color: #ff3399;
+  }
 
-  .polaroid-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    padding: 40px;
+  .botao img {
+    width: 80px; /* ajuste o tamanho conforme necessário */
+    height: auto;
+    transition: transform 0.3s ease;
   }
   
-  .polaroid {
-    background: white;
-    border: 1px solid #b377e3;
-    border-radius: 10px;
-    padding: 10px 10px 20px;
-    width: 260px;
-    box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.2);
-    transform: rotate(var(--angle));
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-family: 'Optima', sans-serif;
+  .botao img:hover {
+    transform: scale(1.2);
   }
   
-  .polaroid img {
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    height: 100%;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.3;
+    animation: glitter 3s linear infinite;
+    pointer-events: none;
+    z-index: 0;
   }
   
-  .caption {
-    text-align: center;
-    color: #5c008d;
-    font-size: 16px;
-    font-weight: 500;
+  @keyframes glitter {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 40px 40px;
+    }
+  }
+
+  .background-brilhos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none; /* <-- Adicionado aqui */
   }
   
-  .polaroid:hover {
-    transform: rotate(0deg) scale(1.05);
-    z-index: 10;
-    box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.4);
+  @keyframes sparkle {
+    0%, 100% {
+      opacity: 0;
+      transform: scale(1) translateY(0);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.5) translateY(-10px);
+    }
   }
   
-  /* Inclinações aleatórias */
-  .polaroid:nth-child(1) { --angle: -3deg; }
-  .polaroid:nth-child(2) { --angle: 2.5deg; }
-  .polaroid:nth-child(3) { --angle: -4deg; }
-  .polaroid:nth-child(4) { --angle: 3.5deg; }
-  .polaroid:nth-child(5) { --angle: -2deg; }
+  .sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: sparkle 2s infinite ease-in-out;
+    pointer-events: none;
+  }
+  
   
