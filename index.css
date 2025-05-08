@@ -1,0 +1,129 @@
+.titulo-centralizado {
+    width: 100%;
+    text-align: center;
+    font-size: 36px;
+    color: #5c008d;
+    margin-bottom: 20px;
+    font-family: 'Optima', sans-serif;
+  }
+  
+
+body {
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 40px 20px;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(rgba(180, 120, 220, 0.3), rgba(180, 120, 220, 0.3)),
+    url('../view/teste_borboletas.jpeg');  
+    background-color: #C092EC;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display:flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vinil {
+    width: 80px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+ 
+  .girando {
+    animation: girar 3s linear infinite;
+  }
+  @keyframes girar {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }  
+  .music-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+    z-index: 1000;
+  }
+     
+ 
+  .music .vinil {
+    width: 60px;
+    height: auto;
+  }
+ 
+  @media (max-width: 768px) {
+    .music-container {
+      position: relative;
+      top: 0;
+      right: 0;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      z-index: auto;
+    }
+  
+    .vinil {
+      width: 70px;
+    }
+  }
+  
+
+  .polaroid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px;
+  }
+  
+  .polaroid {
+    background: white;
+    border: 1px solid #b377e3;
+    border-radius: 10px;
+    padding: 10px 10px 20px;
+    width: 260px;
+    box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.2);
+    transform: rotate(var(--angle));
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Optima', sans-serif;
+  }
+  
+  .polaroid img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .caption {
+    text-align: center;
+    color: #5c008d;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .polaroid:hover {
+    transform: rotate(0deg) scale(1.05);
+    z-index: 10;
+    box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Inclinações aleatórias */
+  .polaroid:nth-child(1) { --angle: -3deg; }
+  .polaroid:nth-child(2) { --angle: 2.5deg; }
+  .polaroid:nth-child(3) { --angle: -4deg; }
+  .polaroid:nth-child(4) { --angle: 3.5deg; }
+  .polaroid:nth-child(5) { --angle: -2deg; }
+  
